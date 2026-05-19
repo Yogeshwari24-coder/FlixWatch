@@ -5,14 +5,14 @@ import cookieParser from "cookie-parser"
 import cors from 'cors'
 import authRoutes from "./routes/authRoutes.js"
 dotenv.config();
-let port = 7000
+let port = process.env.PORT || 7000
 
 let app = express()
 app.use(express.json())
 app.use(cookieParser())
 
 app.use(cors({
-    origin: "http://localhost:5173",
+    origin: "flix-watch-two.vercel.app",
     credentials: true
 }))
 

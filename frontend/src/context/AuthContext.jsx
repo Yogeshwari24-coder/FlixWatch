@@ -1,7 +1,7 @@
 import React, { createContext } from 'react'
 export const dataContext = createContext();
 const AuthContext = ({children}) => {
-    let serverUrl = "http://localhost:7000"
+    let serverUrl = "https://flixwatch.onrender.com"
 
     let value = {
         serverUrl,
