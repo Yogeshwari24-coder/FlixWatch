@@ -17,7 +17,6 @@ app.use(cors({
     methods: ["GET", "POST", "PUT", "DELETE"]
 }))
 
-app.options("*", cors())
 
 app.use((req, res, next) => {
   res.setHeader(
