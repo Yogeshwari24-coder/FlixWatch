@@ -12,9 +12,12 @@ app.use(express.json())
 app.use(cookieParser())
 
 app.use(cors({
-    origin: "flix-watch-two.vercel.app",
-    credentials: true
+    origin: "https://flix-watch-git-main-yogeshwariahirwar88-5736s-projects.vercel.app",
+    credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE"]
 }))
+
+app.options("*", cors())
 
 app.use((req, res, next) => {
   res.setHeader(
