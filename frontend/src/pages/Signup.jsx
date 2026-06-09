@@ -16,10 +16,12 @@ const Signup = () => {
   const [name, setName] = useState("")
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
+  const [loading, setLoading] = useState(false)
 
   const handleSignup = async (e) => {
 
     e.preventDefault()
+    setLoading(true)
 
     try {
 
@@ -51,6 +53,8 @@ const Signup = () => {
         error.response?.data?.message || "Signup failed"
       )
 
+    } finally {
+      setLoading(false)
     }
 
   }
@@ -156,10 +160,17 @@ const Signup = () => {
             />
 
             <button
-              type='submit'
+              type='submit' 
+              disabled={loading}
               className='bg-black text-white text-lg md:text-xl h-12 w-full rounded-xl mt-3 cursor-pointer hover:scale-[1.02] duration-200'
             >
-              Sign Up
+              {loading ? (
+                <div className="flex justify-center items-center">
+                  <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                </div>
+              ) : (
+                "Sign Up"
+              )}
             </button>
 
           </form>

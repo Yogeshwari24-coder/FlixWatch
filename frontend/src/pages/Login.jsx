@@ -13,10 +13,12 @@ const Login = () => {
 
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
+  const [loading, setLoading] = useState(false)
 
   const handleLogin = async (e) => {
 
     e.preventDefault()
+    setLoading(true)
 
     try {
 
@@ -45,6 +47,8 @@ const Login = () => {
         error.response?.data?.message || "Login failed"
       )
 
+    } finally {
+      setLoading(false)
     }
 
   }
@@ -104,9 +108,14 @@ const Login = () => {
 
             <button
               type='submit'
+              disabled={loading}
               className='bg-black text-white text-lg md:text-xl h-12 w-full rounded-xl mt-3 cursor-pointer hover:scale-[1.02] duration-200'
             >
-              Log In
+              {loading?(
+                <div className='flex justify-center items-center'>
+                  <div className='h-5 w-5 border-2 rounded-full border-t-transparent animate-spin'></div>
+                </div>
+              ):("Log In")}
             </button>
 
           </form>
